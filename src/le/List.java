@@ -10,14 +10,17 @@ public class List<E> {
     private Node<E> front;
     private int count;
     
+    //default constructor
     public List(){
         this.front = new Node(null);
     }
     
+    //add method
     public void add(int index, E obj) {
         if (index < 0 || index > count) {
             return;
         }
+        //this is a dummy Node
         Node newNode = new Node(obj);
         Node prevNode = front;
         for (int i = 0; i < index - 1; i++) {
@@ -28,17 +31,27 @@ public class List<E> {
         count++;
     }
     
+    //remove method
     public void remove(int index){
         
     }
     
+    //getting the size of the Linked List by counting next Node through count
     public int size(){
         return count;
     }
 
+    //overide toString method
     @Override
     public String toString() {
-        return "List{" + "front=" + front + ", count=" + count + '}';
+        String output = "[ ";
+        Node currNode = front;
+        while(currNode.getNext() != null){
+            currNode = currNode.getNext();
+            output += "(" + currNode.getData() + ") ";
+        }
+        output += "]";
+        return output;
     }
     
      
